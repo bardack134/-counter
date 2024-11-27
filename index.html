@@ -15,17 +15,17 @@
 
 <body>
   <div class="container text-center  p-2 ">
-    <h2 class=" fw-bold ">Counter: </h2>
-    <span class="p-2 fs-1 " id="nowColor">0</span>
-    <div class="">
+    <h1 class=" fw-bold ">Counter: </h1>
+    <span class="p-2 fs-1 " id="value">0</span>
+    <div class="btn-group-lg">
 
-      <button type="button" class="btn btn-outline-danger fs-5" onclick="changeColor()">
-        Decrese
+      <button type="button" class="btn btn-outline-danger  " id="decrease" onclick="changeColor()">
+        Decrease
       </button>
-      <button type="button" class="btn btn-outline-secondary fs-5" onclick="changeColor()">
+      <button type="button" class="btn btn-outline-secondary " id="reset" onclick="changeColor()">
         Reset
       </button>
-      <button type="button" class="btn btn-outline-primary fs-5" onclick="changeColor()">
+      <button type="button" class="btn btn-outline-primary " id="increase" onclick="changeColor()">
         Increase
       </button>
     </div>
