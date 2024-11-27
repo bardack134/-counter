@@ -1,22 +1,54 @@
-function changeColor() {
-  // 使用する文字（16進数の数字と文字）を定義
-  const letters = "0123456789ABCDEF";
+let count=0;
+let elementClass=null;
+let nowValue=document.getElementById("counter").textContent;
+const buttonList=document.querySelectorAll("button"); //、1.すべてのボタンを選択します
+
+// 2.myFuntion->配列要素ごとに実行する関数。
+buttonList.forEach(myFuntion);
+
+// item-> 現在の要素の値。
+function myFuntion(item){
+  item.addEventListener("click", doFuntion);//3.各ボタンにイベントリスナーを追加
+  // https://www.w3schools.com/jsref/met_document_addeventlistener.asp
+}
+
+//4.ボタンがクリックされたときに実行する関数
+function doFuntion(event){
+  /*event ->イベントが発生した要素を取得します。
+  https://www.w3schools.com/jsref/event_target.asp */ 
+
+
+  // classListを使うと、クリックされたボタンが持つクラスのリストを取得できます。
+  // target プロパティは、イベントが発生した要素を返します。
+  elementClass=event.target.classList;
   
-  // 16進数のカラーコードは"#"で始まる
-  let color = "#";
 
-  // カラーコードを生成するために6回繰り返す（#RRGGBB形式なので6桁必要）
-  for (let i = 0; i < 6; i++) {
-    // letters配列の長さを掛けたランダムな数値を生成
-    let number = Math.random() * letters.length;
+  // 5.クラスに応じて、カウンタの値を増減またはリセット。
+  https://www.w3schools.com/jsreF/dom_obj_html_domtokenlist.asp
 
-    // 生成した数値を小数点以下切り捨ててインデックスとして使用
-    color += letters[Math.floor(number)];
+  if (elementClass.contains("increase")) {
+    count +=1;
+     
+  }else if (elementClass.contains("decrease")){
+    count -=1;
+     
+  }else  {
+    count=0;
+    
   }
+  // 6.カウンタの値を画面に表示。
+  document.getElementById("counter").innerHTML=count;
 
-  // 生成されたカラーコードをHTML内の要素に表示
-  document.getElementById("nowColor").innerHTML = color;
+  // 7.カウンタの値が正・負・ゼロの場合で色を変える。
+  changeColor()
+}
 
-  // 生成したカラーコードを背景色として適用しています。
-  document.body.style.backgroundColor = color;
+function changeColor(){
+  if (count>0) {
+    document.getElementById("counter").style.color="blue";
+  }else if (count<0) {
+    document.getElementById("counter").style.color="red";
+  }else {
+    document.getElementById("counter").style.color="black";
+  }
 }
